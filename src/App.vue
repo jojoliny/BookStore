@@ -1,26 +1,28 @@
 <template>
   <div>
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-    <ElButton>aa</ElButton>
+    <!-- <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+    <product :title="title"></product>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from "vue";
+import HelloWorld from "./components/HelloWorld.vue";
 
-
-import {ElButton,ElCard} from 'element-plus';
+import Product from "./components/product/src/product.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
-    ElButton,
-    ElCard
-  }
-})
+    Product,
+  },
+  data() {
+    return  {
+      title:"title"
+    }
+  },
+});
 </script>
 
 <style>
