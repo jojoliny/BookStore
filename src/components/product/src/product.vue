@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <el-card class="box-card">
-      <template #header>
-        <div class="card-header flex-row-center-between">
-          <span>{{ title }}</span>
-          <el-button class="button" type="text">操作按钮</el-button>
-        </div>
-      </template>
-      <div>
-        <el-image
-          src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-        ></el-image>
+  <el-card class="box-card product">
+    <template #header>
+      <div class="card-header flex-row-center-between">
+        <h5 class="title">{{ title }}</h5>
+        <span>{{publishDate}}</span>
+        <!-- <el-button class="button" type="text">前往下载</el-button> -->
       </div>
-    </el-card>
-  </div>
+    </template>
+    <el-row :gutter="24">
+      <el-col :span="5">
+        <el-image style="width: 135px;height: 145px;" :src="img" :alt="alt" fit="cover"></el-image>
+      </el-col>
+      <el-col :span="19">
+        <span class="description">{{description}}</span>
+      </el-col>
+    </el-row>
+  </el-card>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -24,14 +26,38 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    img: String,
+    description: String,
+    publishDate: {
+      type: String,
+      validator(value) {
+        return value < new Date();
+      },
+    },
   },
 });
 </script>
 
 <style scoped>
+.product {
+  width: 730px;
+  cursor: pointer;
+}
+.title {
+  margin: 0;
+}
+.description {
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+  width: 100%;
+  height: 145px;
+}
 el-image {
-  width: 100px;
-  height: 100px;
+  width: 135px;
+  height: 145px;
 }
 .flex-row-center-between {
   display: flex;
