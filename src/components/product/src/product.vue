@@ -18,8 +18,7 @@
   </el-card>
 </template>
 <script>
-import { defineComponent } from "vue";
-export default defineComponent({
+export default {
   name: "Product",
   props: {
     title: {
@@ -35,7 +34,7 @@ export default defineComponent({
       },
     },
   },
-});
+};
 </script>
 
 <style scoped>
